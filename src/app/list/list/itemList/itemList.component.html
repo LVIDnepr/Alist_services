@@ -1,0 +1,60 @@
+<!--<div class="container ">
+  <div class="row">
+    <div class="col-10">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-primary"
+          [ngClass]="{'progress_complete': onProgressComplete(item)}" *ngFor="let item of productsList; let i = index">
+            <div class="input-group-prepend">
+              <div >
+                <button class="btn-primary" (click)="onChangeProg(i)"> Status </button>
+              </div>
+            </div>
+          <span class="product_number">{{ i + 1 }}.</span>
+          {{ item.productName }}
+          <span class="badge badge-pill badge-success">
+            {{ item.progressListProducts }}
+          </span>
+          <button class="close" aria-label="Close" (click)="onRemoveProd(i)">
+            <img src="https://png.icons8.com/ios/2x/delete-forever-filled.png">
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10">
+
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-action"
+          *ngFor="let product of productsList; let i = index"
+          (click)="onProductClicked(i)"
+          [ngClass]="{'completed': ProductCompleted(product)}">
+          
+          <span class="product_number">{{ i + 1 }}.</span>
+
+          {{ product.productName }}
+         
+          <span class="badge badge-info">{{ product.progressListProducts }}</span>
+
+          <div class="d-inline-flex control">
+            <button 
+              type="button" 
+              class="btn btn-primary btn-sm mr-2"
+              (click)="onEditClicked($event, i)">
+              Rename
+            </button>
+
+            <button 
+              type="button" 
+              class="btn btn-danger btn-sm ml-2" 
+              (click)="onCloseClicked(i)">
+              X
+            </button>
+          </div>
+      </li>
+    </ul>
+    
+  </div>
+</div>

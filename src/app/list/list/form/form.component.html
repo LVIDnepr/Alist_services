@@ -1,0 +1,70 @@
+<!--<div class="form row alert alert-success" role="alert">
+  <div class="row">
+    <input 
+      type="text"
+      [value]="productName"
+      [ngStyle] = "{'border-color': value ? 'red' : 'green'}"
+      (input)="onProductName($event)">
+  </div>
+  <div class="col-4">
+    <button 
+      class="btn btn-success"
+      (click)="onAddProduct()">
+      Add
+    </button>
+  </div>
+</div> -->
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10 mb-2 mt-2">
+
+    <div class="row" *ngIf="visible; else updateProductsBlock">
+      <div class="col-md-8 d-flex justify-content-start">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Enter your Product to Products List here:</span>
+          </div>
+          <input 
+            type="text" 
+            class="form-control" 
+            aria-label="ProductName" 
+            aria-describedby="basic-addon1"
+            [(ngModel)]="productName">
+        </div>
+      </div>
+      <div class="col-md-4 d-flex justify-content-end">
+        <button 
+          class="btn btn-primary"
+         (click)="onCreateProduct()"
+         [disabled]="!productName"
+          >Add product</button>
+      </div>
+    </div>
+
+    <ng-template #updateProductsBlock>
+        <div class="row">
+          <div class="col-md-8 d-flex justify-content-start">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Your updated name of Product to Products List :</span>
+              </div>
+              <input 
+                type="text" 
+                class="form-control" 
+                aria-label="ProductName" 
+                aria-describedby="basic-addon1"
+                [(ngModel)]="productName">
+            </div>
+          </div>
+          <div class="col-md-4 d-flex justify-content-end">
+            <button 
+              class="btn btn-primary"
+              (click)="onUpdateProduct()"
+              [disabled]="!productName"
+              >Update Product</button>
+          </div>
+        </div>
+    </ng-template>
+
+    <hr>
+  </div>
+</div>
